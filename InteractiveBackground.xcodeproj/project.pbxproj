@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A73D381B1FF0CCE400EB1DD4 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */; };
+		A73D381D1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D381C1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift */; };
 		A7E26AED1FEB5D0600F5D7F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */; };
 		A7E26AEF1FEB5D0600F5D7F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E26AEE1FEB5D0600F5D7F4 /* ViewController.swift */; };
 		A7E26AF11FEB5D0600F5D7F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E26AF01FEB5D0600F5D7F4 /* Assets.xcassets */; };
 		A7E26AF41FEB5D0600F5D7F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E26AF21FEB5D0600F5D7F4 /* Main.storyboard */; };
-		A7E26B001FEB5D0600F5D7F4 /* InteractiveBackgroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E26AFF1FEB5D0600F5D7F4 /* InteractiveBackgroundTests.swift */; };
-		A7E26B0B1FEB5D0600F5D7F4 /* InteractiveBackgroundUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E26B0A1FEB5D0600F5D7F4 /* InteractiveBackgroundUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +33,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
+		A73D381C1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopBackgroundHandler.swift; sourceTree = "<group>"; };
 		A7E26AE91FEB5D0600F5D7F4 /* InteractiveBackground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InteractiveBackground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7E26AEE1FEB5D0600F5D7F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -41,11 +43,7 @@
 		A7E26AF51FEB5D0600F5D7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7E26AF61FEB5D0600F5D7F4 /* InteractiveBackground.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InteractiveBackground.entitlements; sourceTree = "<group>"; };
 		A7E26AFB1FEB5D0600F5D7F4 /* InteractiveBackgroundTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InteractiveBackgroundTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7E26AFF1FEB5D0600F5D7F4 /* InteractiveBackgroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackgroundTests.swift; sourceTree = "<group>"; };
-		A7E26B011FEB5D0600F5D7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7E26B061FEB5D0600F5D7F4 /* InteractiveBackgroundUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InteractiveBackgroundUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7E26B0A1FEB5D0600F5D7F4 /* InteractiveBackgroundUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveBackgroundUITests.swift; sourceTree = "<group>"; };
-		A7E26B0C1FEB5D0600F5D7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				A7E26AEB1FEB5D0600F5D7F4 /* InteractiveBackground */,
-				A7E26AFE1FEB5D0600F5D7F4 /* InteractiveBackgroundTests */,
-				A7E26B091FEB5D0600F5D7F4 /* InteractiveBackgroundUITests */,
 				A7E26AEA1FEB5D0600F5D7F4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -96,32 +92,16 @@
 		A7E26AEB1FEB5D0600F5D7F4 /* InteractiveBackground */ = {
 			isa = PBXGroup;
 			children = (
+				A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */,
 				A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */,
 				A7E26AEE1FEB5D0600F5D7F4 /* ViewController.swift */,
+				A73D381C1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift */,
+				A7E26AF61FEB5D0600F5D7F4 /* InteractiveBackground.entitlements */,
 				A7E26AF01FEB5D0600F5D7F4 /* Assets.xcassets */,
 				A7E26AF21FEB5D0600F5D7F4 /* Main.storyboard */,
 				A7E26AF51FEB5D0600F5D7F4 /* Info.plist */,
-				A7E26AF61FEB5D0600F5D7F4 /* InteractiveBackground.entitlements */,
 			);
 			path = InteractiveBackground;
-			sourceTree = "<group>";
-		};
-		A7E26AFE1FEB5D0600F5D7F4 /* InteractiveBackgroundTests */ = {
-			isa = PBXGroup;
-			children = (
-				A7E26AFF1FEB5D0600F5D7F4 /* InteractiveBackgroundTests.swift */,
-				A7E26B011FEB5D0600F5D7F4 /* Info.plist */,
-			);
-			path = InteractiveBackgroundTests;
-			sourceTree = "<group>";
-		};
-		A7E26B091FEB5D0600F5D7F4 /* InteractiveBackgroundUITests */ = {
-			isa = PBXGroup;
-			children = (
-				A7E26B0A1FEB5D0600F5D7F4 /* InteractiveBackgroundUITests.swift */,
-				A7E26B0C1FEB5D0600F5D7F4 /* Info.plist */,
-			);
-			path = InteractiveBackgroundUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,6 +173,11 @@
 					A7E26AE81FEB5D0600F5D7F4 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 0;
+							};
+						};
 					};
 					A7E26AFA1FEB5D0600F5D7F4 = {
 						CreatedOnToolsVersion = 9.2;
@@ -258,6 +243,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7E26AEF1FEB5D0600F5D7F4 /* ViewController.swift in Sources */,
+				A73D381D1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift in Sources */,
+				A73D381B1FF0CCE400EB1DD4 /* ImageSaver.swift in Sources */,
 				A7E26AED1FEB5D0600F5D7F4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,7 +253,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7E26B001FEB5D0600F5D7F4 /* InteractiveBackgroundTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,7 +260,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7E26B0B1FEB5D0600F5D7F4 /* InteractiveBackgroundUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +400,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = InteractiveBackground/InteractiveBackground.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = InteractiveBackground/Info.plist;
@@ -430,7 +414,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = InteractiveBackground/InteractiveBackground.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = InteractiveBackground/Info.plist;
