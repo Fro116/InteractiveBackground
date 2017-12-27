@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A73D381B1FF0CCE400EB1DD4 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */; };
-		A73D381D1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D381C1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift */; };
+		A7D35C281FF2D6920067ED3C /* Window.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D35C271FF2D6920067ED3C /* Window.swift */; };
+		A7D35C2A1FF2DD0B0067ED3C /* DesktopBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D35C291FF2DD0B0067ED3C /* DesktopBackground.swift */; };
+		A7D8C8F11FF2F696004E15CB /* MonikaAfterstoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D8C8F01FF2F696004E15CB /* MonikaAfterstoryAdapter.swift */; };
+		A7D8C8F31FF2FB70004E15CB /* EventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D8C8F21FF2FB70004E15CB /* EventHandler.swift */; };
 		A7E26AED1FEB5D0600F5D7F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */; };
-		A7E26AEF1FEB5D0600F5D7F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E26AEE1FEB5D0600F5D7F4 /* ViewController.swift */; };
 		A7E26AF11FEB5D0600F5D7F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E26AF01FEB5D0600F5D7F4 /* Assets.xcassets */; };
 		A7E26AF41FEB5D0600F5D7F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E26AF21FEB5D0600F5D7F4 /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -34,10 +36,12 @@
 
 /* Begin PBXFileReference section */
 		A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
-		A73D381C1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopBackgroundHandler.swift; sourceTree = "<group>"; };
+		A7D35C271FF2D6920067ED3C /* Window.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Window.swift; sourceTree = "<group>"; };
+		A7D35C291FF2DD0B0067ED3C /* DesktopBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopBackground.swift; sourceTree = "<group>"; };
+		A7D8C8F01FF2F696004E15CB /* MonikaAfterstoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonikaAfterstoryAdapter.swift; sourceTree = "<group>"; };
+		A7D8C8F21FF2FB70004E15CB /* EventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandler.swift; sourceTree = "<group>"; };
 		A7E26AE91FEB5D0600F5D7F4 /* InteractiveBackground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InteractiveBackground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A7E26AEE1FEB5D0600F5D7F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A7E26AF01FEB5D0600F5D7F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A7E26AF31FEB5D0600F5D7F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A7E26AF51FEB5D0600F5D7F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,14 +96,16 @@
 		A7E26AEB1FEB5D0600F5D7F4 /* InteractiveBackground */ = {
 			isa = PBXGroup;
 			children = (
-				A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */,
-				A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */,
-				A7E26AEE1FEB5D0600F5D7F4 /* ViewController.swift */,
-				A73D381C1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift */,
 				A7E26AF61FEB5D0600F5D7F4 /* InteractiveBackground.entitlements */,
+				A7E26AF51FEB5D0600F5D7F4 /* Info.plist */,
+				A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */,
+				A7D35C291FF2DD0B0067ED3C /* DesktopBackground.swift */,
+				A7D8C8F21FF2FB70004E15CB /* EventHandler.swift */,
+				A7D8C8F01FF2F696004E15CB /* MonikaAfterstoryAdapter.swift */,
+				A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */,
+				A7D35C271FF2D6920067ED3C /* Window.swift */,
 				A7E26AF01FEB5D0600F5D7F4 /* Assets.xcassets */,
 				A7E26AF21FEB5D0600F5D7F4 /* Main.storyboard */,
-				A7E26AF51FEB5D0600F5D7F4 /* Info.plist */,
 			);
 			path = InteractiveBackground;
 			sourceTree = "<group>";
@@ -242,10 +248,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7E26AEF1FEB5D0600F5D7F4 /* ViewController.swift in Sources */,
-				A73D381D1FF0CEA300EB1DD4 /* DesktopBackgroundHandler.swift in Sources */,
+				A7D8C8F31FF2FB70004E15CB /* EventHandler.swift in Sources */,
 				A73D381B1FF0CCE400EB1DD4 /* ImageSaver.swift in Sources */,
+				A7D35C2A1FF2DD0B0067ED3C /* DesktopBackground.swift in Sources */,
 				A7E26AED1FEB5D0600F5D7F4 /* AppDelegate.swift in Sources */,
+				A7D35C281FF2D6920067ED3C /* Window.swift in Sources */,
+				A7D8C8F11FF2F696004E15CB /* MonikaAfterstoryAdapter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

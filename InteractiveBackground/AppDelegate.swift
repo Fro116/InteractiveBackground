@@ -9,74 +9,48 @@
 import Cocoa
 import Carbon.HIToolbox
 
+/*
+ * Class to play an app as the desktop background
+ */
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    let pid: Int32 = 3581
-    typealias window_t = [String : AnyObject]
-    let WINDOW_NAME = "Monika After Story"
-
-    private func handleMouseEvent(event: NSEvent) -> Void {
-        let enterCode = CGKeyCode(kVK_Return)
-        let keyDownEvent = CGEvent(keyboardEventSource: nil, virtualKey: enterCode, keyDown: true)!
-        let keyUpEvent = CGEvent(keyboardEventSource: nil, virtualKey: enterCode, keyDown: false)!
+    private static func simulateKeypress(keyCode: CGKeyCode, pid: Int32) {
+        let keyDownEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: true)!
         keyDownEvent.postToPid(pid)
+        let keyUpEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false)!
         keyUpEvent.postToPid(pid)
     }
     
-    private func handleLocalMouseEvent(event: NSEvent) -> NSEvent? {
-        handleMouseEvent(event: event)
-        return nil;
+    private func isBackgroundEvent(event: NSEvent) -> Bool {
+        // checks that all windows the point intersects with are below the background level
+        let visibleLevel = CGWindowLevel(CGWindowLevelKey.baseWindow.rawValue)
+        let backgroundLevel = CGWindowLevel(CGWindowLevelKey.desktopIconWindow.rawValue)
+        let location = event.locationInWindow
+        return Window.getWindowList(listOptions: CGWindowListOption.optionOnScreenOnly)
+            .filter({$0.windowLevel()! >= visibleLevel})
+            .filter({$0.bounds()?.contains(location) == true})
+            .map({$0.windowLevel()! == backgroundLevel})
+            .reduce(true, {$0 && $1})
     }
-    
-    private func handleGlobalMouseEvent(event: NSEvent) -> Void {
-        handleMouseEvent(event: event)
-    }
-    
-    private func selectWindow(windowList: [window_t], name: String) -> window_t? {
-        for window in windowList {
-            if let windowName = window["kCGWindowName"] {
-                if windowName as! String == name {
-                    return window
-                }
-            }
+
+    private func handleEvent(event: NSEvent) -> Void {
+        // forward events that interact with the desktop background
+        if isBackgroundEvent(event: event) {
+            handler.handle(event: event)
         }
-        return nil
     }
     
-    private func getWindowList() -> [window_t] {
-        let listOptions = CGWindowListOption.optionAll
-        let relativeToWindow = CGWindowID(kCGNullWindowID)
-        let windowList = CGWindowListCopyWindowInfo(listOptions, relativeToWindow)
-        return windowList as! [window_t]
-    }
-    
-    private func saveImage(window: window_t, url: URL) {
-        let id = window["kCGWindowNumber"] as! CGWindowID
-        let rawBounds = window["kCGWindowBounds"] as! CFDictionary
-        let bounds = CGRect(dictionaryRepresentation: rawBounds)!
-        let resolution = CGWindowImageOption.bestResolution
-        let selector = CGWindowListOption.optionIncludingWindow
-        let rawImage = CGWindowListCreateImage(bounds, selector, id, resolution)!
-        let image = NSImage(cgImage: rawImage, size: NSZeroSize)
-        image.savePNG(to: url)
-    }
-    
-    @objc func update() -> Void {
-        setDesktopBackground(windowName: WINDOW_NAME)
-    }
-    
+        
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        let mask : NSEvent.EventTypeMask = [NSEvent.EventTypeMask.leftMouseUp]
-        NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handleGlobalMouseEvent)
-        NSEvent.addLocalMonitorForEvents(matching: mask, handler: handleLocalMouseEvent)
-        //Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.update), userInfo: nil, repeats: true)
+        let mask : NSEvent.EventTypeMask = [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.leftMouseUp]
+        NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handleEvent)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
+        
     }
 
-
+    private let handler : EventHandler = MonikaAfterstoryAdapter()
 }
 

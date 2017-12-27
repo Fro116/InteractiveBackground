@@ -9,6 +9,10 @@
 import Foundation
 import Cocoa
 
+/**
+ * Extensions to the default image classes that enable saving to disk
+ */
+
 extension NSBitmapImageRep {
     var png: Data? {
         return representation(using: .png, properties: [:])
