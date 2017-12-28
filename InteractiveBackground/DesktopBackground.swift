@@ -17,9 +17,9 @@ class DesktopBackground {
     /* The desktop image will be cached if we try to reuse image names.
      * To force the desktop image to refresh, each background image is
      * given a different name */
-    var forceDesktopImageRefreshID = 0
+    private static var forceDesktopImageRefreshID = 0
     
-    public func setDesktopBackground(imageURL: URL) {
+    public static func set(imageURL: URL) {
         // sets the background on the current space of each monitor
         let screens = NSScreen.screens
         for screen in screens {
@@ -27,7 +27,7 @@ class DesktopBackground {
         }
     }
     
-    public func setDesktopBackground(window: Window) {
+    public static func set(window: Window) {
         // clean up last image
         let oldURL = generateImageURL()
         try? FileManager().removeItem(at: oldURL)
@@ -36,10 +36,10 @@ class DesktopBackground {
         forceDesktopImageRefreshID += 1
         let imageURL = generateImageURL()
         window.saveToImage(url: imageURL)
-        setDesktopBackground(imageURL: imageURL)
+        set(imageURL: imageURL)
     }
     
-    private func generateImageURL() -> URL {
+    private static func generateImageURL() -> URL {
         let filename = "DesktopBackground-\(forceDesktopImageRefreshID).png"
         let url = NSURL(fileURLWithPath: NSTemporaryDirectory())
             .appendingPathComponent(filename)
