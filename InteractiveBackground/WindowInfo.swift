@@ -12,14 +12,14 @@ import Cocoa
 /**
  * Wrapper around the window type returned by CGWindowList* routines
  */
-class Window {
+class WindowInfo {
     
     typealias window_t = [String : AnyObject]
     
-    public static func getWindowList(listOptions : CGWindowListOption)  -> [Window] {
+    public static func getWindowList(listOptions : CGWindowListOption)  -> [WindowInfo] {
         let relativeToWindow = CGWindowID(kCGNullWindowID)
         let windowList = CGWindowListCopyWindowInfo(listOptions, relativeToWindow) as! [window_t]
-        return windowList.map({Window(window: $0)})
+        return windowList.map({WindowInfo(window: $0)})
     }
     
     public init(window: window_t) {

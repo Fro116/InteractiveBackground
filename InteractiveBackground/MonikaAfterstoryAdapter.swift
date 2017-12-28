@@ -18,8 +18,8 @@ class MonikaAfterstoryAdapter : EventHandler {
     
     private static let WINDOW_NAME = "Monika After Story"
     
-    private static func getMASWindow() -> Window? {
-        let windows = Window.getWindowList(listOptions: CGWindowListOption.optionAll)
+    private static func getMASWindow() -> WindowInfo? {
+        let windows = WindowInfo.getWindowList(listOptions: CGWindowListOption.optionAll)
         let matching = windows.filter({$0.name() == WINDOW_NAME})
         return matching.last
     }
@@ -31,7 +31,7 @@ class MonikaAfterstoryAdapter : EventHandler {
         keyUpEvent.postToPid(pid)
     }
     
-    private static func simulateMouseClick(window: Window) {
+    private static func simulateMouseClick(window: WindowInfo) {
         /**
          * Monika Afterstory does not respond to mouse events. It responds
          * to special key events such as enter, backspace, and arrow keys.

@@ -27,7 +27,7 @@ class DesktopBackground {
         }
     }
     
-    public static func set(window: Window) {
+    public static func set(window: WindowInfo) {
         // clean up last image
         let oldURL = generateImageURL()
         try? FileManager().removeItem(at: oldURL)
