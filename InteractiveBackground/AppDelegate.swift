@@ -19,7 +19,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let visibleLevel = CGWindowLevel(CGWindowLevelKey.baseWindow.rawValue)
         let backgroundLevel = CGWindowLevel(CGWindowLevelKey.desktopIconWindow.rawValue)
         let location = event.locationInWindow
-        return Window.getWindowList(listOptions: CGWindowListOption.optionOnScreenOnly)
+        return WindowInfo.getWindowList(listOptions: CGWindowListOption.optionOnScreenOnly)
             .filter({$0.windowLevel() >= visibleLevel})
             .filter({$0.bounds().contains(location) == true})
             .map({$0.windowLevel() == backgroundLevel})
