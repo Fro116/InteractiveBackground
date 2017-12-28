@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-protocol EventHandler {
+protocol EventHandler {    
     
     func handle(event: NSEvent) -> Void    
     

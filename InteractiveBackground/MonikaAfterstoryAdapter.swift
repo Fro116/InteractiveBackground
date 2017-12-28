@@ -8,26 +8,46 @@
 
 import Foundation
 import Cocoa
+import Carbon.HIToolbox
+
 
 /**
  * Simulates playing Monika Afterstory
  */
 class MonikaAfterstoryAdapter : EventHandler {
-    let WINDOW_NAME = "Monika After Story"
+    
+    private static let WINDOW_NAME = "Monika After Story"
+    
+    private static func getMASWindow() -> Window? {
+        let windows = Window.getWindowList(listOptions: CGWindowListOption.optionAll)
+        let matching = windows.filter({$0.name() == WINDOW_NAME})
+        return matching.last
+    }
+    
+    private static func simulateKeypress(keyCode: CGKeyCode, pid: Int32) {
+        let keyDownEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: true)!
+        keyDownEvent.postToPid(pid)
+        let keyUpEvent = CGEvent(keyboardEventSource: nil, virtualKey: keyCode, keyDown: false)!
+        keyUpEvent.postToPid(pid)
+    }
+    
+    private static func simulateMouseClick(window: Window) {
+        /**
+         * Monika Afterstory does not respond to mouse events. It responds
+         * to special key events such as enter, backspace, and arrow keys.
+         * We simulate a mouse click by pressing the enter button
+         */
+        let pid = window.pid()
+        let enterCode = CGKeyCode(kVK_Return)
+        simulateKeypress(keyCode: enterCode, pid: pid)
+    }
     
     public func handle(event: NSEvent) {
-        // TODO switch to mirroring
-        print(event)
-        /*let listOptions = CGWindowListOption.optionAll
-         let windowList = getWindowList(listOptions: listOptions)
-         if let window = selectWindow(windowList: windowList, name: WINDOW_NAME) {
-         // Simulate a mouse click in the MAS app. MAS does not recognize mouse click
-         // events and only recognizes special key events suck as enter, escape, arrows,
-         // and backspace
-         let pid = window["kCGWindowOwnerPID"] as! Int32
-         let enterCode = CGKeyCode(kVK_Return)
-         AppDelegate.simulateKeypress(keyCode: enterCode, pid: pid)
-         setDesktopBackground(window: window)
-         }*/
+        if event.type == NSEvent.EventType.leftMouseUp {
+            if let window = MonikaAfterstoryAdapter.getMASWindow() {
+                MonikaAfterstoryAdapter.simulateMouseClick(window: window)
+                DesktopBackground.set(window: window)
+            }
+        }
     }
 }

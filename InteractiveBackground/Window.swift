@@ -30,35 +30,33 @@ class Window {
         return m_window["kCGWindowName"] as? String
     }
     
-    public func pid() -> Int32? {
-        return m_window["kCGWindowOwnerPID"] as? Int32
+    public func pid() -> Int32 {
+        return m_window["kCGWindowOwnerPID"] as! Int32
     }
     
-    public func windowID() -> CGWindowID? {
-        return m_window["kCGWindowNumber"] as? CGWindowID
+    public func windowID() -> CGWindowID {
+        return m_window["kCGWindowNumber"] as! CGWindowID
     }
     
-    public func windowLevel() -> CGWindowLevel? {        
-        return  m_window["kCGWindowLayer"] as? CGWindowLevel
+    public func windowLevel() -> CGWindowLevel {
+        return  m_window["kCGWindowLayer"] as! CGWindowLevel
     }
     
-    public func bounds() -> CGRect? {
-        if let bounds = m_window["kCGWindowBounds"] {
-            return CGRect(dictionaryRepresentation: bounds as! CFDictionary)
-        }
-        return nil
+    public func bounds() -> CGRect {
+        let bounds =  m_window["kCGWindowBounds"] as! CFDictionary
+        return CGRect(dictionaryRepresentation: bounds)!
     }
     
     public func saveToImage(url: URL) {
-        if let region = bounds(), let id = windowID() {
-            let resolution = CGWindowImageOption.bestResolution
-            let selector = CGWindowListOption.optionIncludingWindow
-            let rawImage = CGWindowListCreateImage(region, selector, id, resolution)!
-            // tells NSImage constructor to copy the size from rawImage
-            let rawImageSize = NSZeroSize
-            let image = NSImage(cgImage: rawImage, size: rawImageSize)
-            image.savePNG(to: url)
-        }
+        let region = bounds()
+        let id = windowID()
+        let resolution = CGWindowImageOption.bestResolution
+        let selector = CGWindowListOption.optionIncludingWindow
+        let rawImage = CGWindowListCreateImage(region, selector, id, resolution)!
+        // tells NSImage constructor to copy the size from rawImage
+        let rawImageSize = NSZeroSize
+        let image = NSImage(cgImage: rawImage, size: rawImageSize)
+        image.savePNG(to: url)
     }
     
     public let m_window : window_t
