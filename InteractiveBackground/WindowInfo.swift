@@ -47,7 +47,7 @@ class WindowInfo {
         return CGRect(dictionaryRepresentation: bounds)!
     }
     
-    public func saveToImage(url: URL) {
+    public func image() -> NSImage {
         let region = bounds()
         let id = windowID()
         let resolution = CGWindowImageOption.bestResolution
@@ -56,10 +56,10 @@ class WindowInfo {
         // tells NSImage constructor to copy the size from rawImage
         let rawImageSize = NSZeroSize
         let image = NSImage(cgImage: rawImage, size: rawImageSize)
-        image.savePNG(to: url)
+        return image
     }
     
-    public let m_window : window_t
+    private let m_window : window_t
     
 }
 
