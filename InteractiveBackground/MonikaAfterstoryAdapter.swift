@@ -14,7 +14,7 @@ import Carbon.HIToolbox
 /**
  * Simulates playing Monika Afterstory
  */
-class MonikaAfterstoryAdapter : EventHandler {
+class MonikaAfterstoryAdapter : ApplicationInterface {
     
     private static let WINDOW_NAME = "Monika After Story"
     
@@ -46,8 +46,12 @@ class MonikaAfterstoryAdapter : EventHandler {
         if event.type == NSEvent.EventType.leftMouseUp {
             if let window = MonikaAfterstoryAdapter.getMASWindow() {
                 MonikaAfterstoryAdapter.simulateMouseClick(window: window)
-                DesktopBackground.set(window: window)
             }
         }
     }
+    
+    func image() -> NSImage? {
+        return MonikaAfterstoryAdapter.getMASWindow()?.image()
+    }
+    
 }

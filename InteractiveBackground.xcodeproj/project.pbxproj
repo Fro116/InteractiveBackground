@@ -10,9 +10,8 @@
 		A73D381B1FF0CCE400EB1DD4 /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */; };
 		A7BA98A11FF5831800045314 /* DesktopWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BA98A01FF5831800045314 /* DesktopWindow.swift */; };
 		A7D35C281FF2D6920067ED3C /* WindowInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D35C271FF2D6920067ED3C /* WindowInfo.swift */; };
-		A7D35C2A1FF2DD0B0067ED3C /* DesktopBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D35C291FF2DD0B0067ED3C /* DesktopBackground.swift */; };
 		A7D8C8F11FF2F696004E15CB /* MonikaAfterstoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D8C8F01FF2F696004E15CB /* MonikaAfterstoryAdapter.swift */; };
-		A7D8C8F31FF2FB70004E15CB /* EventHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D8C8F21FF2FB70004E15CB /* EventHandler.swift */; };
+		A7D8C8F31FF2FB70004E15CB /* ApplicationInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D8C8F21FF2FB70004E15CB /* ApplicationInterface.swift */; };
 		A7E26AED1FEB5D0600F5D7F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */; };
 		A7E26AF11FEB5D0600F5D7F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A7E26AF01FEB5D0600F5D7F4 /* Assets.xcassets */; };
 		A7E26AF41FEB5D0600F5D7F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7E26AF21FEB5D0600F5D7F4 /* Main.storyboard */; };
@@ -23,9 +22,8 @@
 		A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		A7BA98A01FF5831800045314 /* DesktopWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopWindow.swift; sourceTree = "<group>"; };
 		A7D35C271FF2D6920067ED3C /* WindowInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowInfo.swift; sourceTree = "<group>"; };
-		A7D35C291FF2DD0B0067ED3C /* DesktopBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopBackground.swift; sourceTree = "<group>"; };
 		A7D8C8F01FF2F696004E15CB /* MonikaAfterstoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonikaAfterstoryAdapter.swift; sourceTree = "<group>"; };
-		A7D8C8F21FF2FB70004E15CB /* EventHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventHandler.swift; sourceTree = "<group>"; };
+		A7D8C8F21FF2FB70004E15CB /* ApplicationInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationInterface.swift; sourceTree = "<group>"; };
 		A7E26AE91FEB5D0600F5D7F4 /* InteractiveBackground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InteractiveBackground.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7E26AF01FEB5D0600F5D7F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,8 +66,7 @@
 				A7E26AF61FEB5D0600F5D7F4 /* InteractiveBackground.entitlements */,
 				A7E26AF51FEB5D0600F5D7F4 /* Info.plist */,
 				A7E26AEC1FEB5D0600F5D7F4 /* AppDelegate.swift */,
-				A7D35C291FF2DD0B0067ED3C /* DesktopBackground.swift */,
-				A7D8C8F21FF2FB70004E15CB /* EventHandler.swift */,
+				A7D8C8F21FF2FB70004E15CB /* ApplicationInterface.swift */,
 				A7D8C8F01FF2F696004E15CB /* MonikaAfterstoryAdapter.swift */,
 				A73D381A1FF0CCE400EB1DD4 /* ImageSaver.swift */,
 				A7D35C271FF2D6920067ED3C /* WindowInfo.swift */,
@@ -158,9 +155,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7BA98A11FF5831800045314 /* DesktopWindow.swift in Sources */,
-				A7D8C8F31FF2FB70004E15CB /* EventHandler.swift in Sources */,
+				A7D8C8F31FF2FB70004E15CB /* ApplicationInterface.swift in Sources */,
 				A73D381B1FF0CCE400EB1DD4 /* ImageSaver.swift in Sources */,
-				A7D35C2A1FF2DD0B0067ED3C /* DesktopBackground.swift in Sources */,
 				A7E26AED1FEB5D0600F5D7F4 /* AppDelegate.swift in Sources */,
 				A7F5A31E1FF57F730077B1B3 /* ViewController.swift in Sources */,
 				A7D35C281FF2D6920067ED3C /* WindowInfo.swift in Sources */,
