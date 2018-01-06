@@ -16,12 +16,13 @@ import Carbon.HIToolbox
  */
 class MonikaAfterstoryAdapter : ApplicationInterface {
     
-    private static let WINDOW_NAME = "Monika After Story"
-    
-    private static func getMASWindow() -> WindowInfo? {
-        let windows = WindowInfo.getWindowList(listOptions: CGWindowListOption.optionAll)
-        let matching = windows.filter({$0.name() == WINDOW_NAME})
-        return matching.last
+    private func getMASWindow() -> WindowInfo? {
+        if m_window == nil {
+            let windows = WindowInfo.getWindowList(listOptions: CGWindowListOption.optionAll)
+            let matching = windows.filter({$0.name() == MonikaAfterstoryAdapter.WINDOW_NAME})
+            m_window = matching.last
+        }
+        return m_window
     }
     
     private static func simulateKeypress(keyCode: CGKeyCode, pid: Int32) {
@@ -44,14 +45,17 @@ class MonikaAfterstoryAdapter : ApplicationInterface {
     
     public func handle(event: NSEvent) {
         if event.type == NSEvent.EventType.leftMouseUp {
-            if let window = MonikaAfterstoryAdapter.getMASWindow() {
+            if let window = getMASWindow() {
                 MonikaAfterstoryAdapter.simulateMouseClick(window: window)
             }
         }
     }
     
     func image() -> NSImage? {
-        return MonikaAfterstoryAdapter.getMASWindow()?.image()
+        return getMASWindow()?.image()
     }
+    
+    private static let WINDOW_NAME = "Monika After Story"
+    private var m_window : WindowInfo? 
     
 }

@@ -709,6 +709,17 @@
                     <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <openGLView useAuxiliaryDepthBufferStencil="NO" allowOffline="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qpl-a4-NMu" customClass="AnimationView" customModule="InteractiveBackground" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            </openGLView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Qpl-a4-NMu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="3Oq-yA-clC"/>
+                            <constraint firstAttribute="trailing" secondItem="Qpl-a4-NMu" secondAttribute="trailing" id="dEt-lb-Vmv"/>
+                            <constraint firstAttribute="bottom" secondItem="Qpl-a4-NMu" secondAttribute="bottom" id="pC5-ng-hSz"/>
+                            <constraint firstItem="Qpl-a4-NMu" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="rwJ-yy-g38"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

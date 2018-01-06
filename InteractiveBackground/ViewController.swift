@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import AVFoundation
 
 class ViewController: NSViewController {
     
@@ -31,21 +32,22 @@ class ViewController: NSViewController {
     
     @objc private func updateImage() {
         if let image = handler.image() {
-            imageView!.image = image
+            //imageView!.image = image
+            //imageView!.needsDisplay = true
+            //print(imageView!.image)
         }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // set size to be full screen
-        self.view.frame = NSScreen.main!.frame
+        let fullScreen = NSScreen.main!.frame
+        view.frame = fullScreen
+        
         // set up event forwarding
-        let mask : NSEvent.EventTypeMask = [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.leftMouseUp]
-        NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handleEvent)
-        // set up image mirroring
-        imageView = NSImageView(frame: self.view.frame)
-        self.view.addSubview(imageView!)
-        Timer.scheduledTimer(timeInterval: frameRate, target: self, selector: #selector(updateImage), userInfo: nil, repeats: true)
+        //let mask : NSEvent.EventTypeMask = [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.leftMouseUp]
+        //NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handleEvent)
     }
 
     override var representedObject: Any? {
@@ -55,7 +57,5 @@ class ViewController: NSViewController {
     }
 
     private let handler : ApplicationInterface = MonikaAfterstoryAdapter()
-    private let frameRate = 0.05
-    private var imageView : NSImageView? = nil
 }
 
