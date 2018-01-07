@@ -10,21 +10,21 @@ import Foundation
 import Cocoa
 
 /**
- *
+ * Virtual layer to interact with an application
  */
 protocol ApplicationInterface {    
     
     /**
      * Forwards a mouse or keyboard event to the given application
      *
-     * @param event a mouse or keyboard event
+     * - parameter event: a mouse or keyboard event
      */
     func handle(event: NSEvent)
 
     /**
      * Captures the viewing window of the application
      *
-     * @return an image of the application's main window
+     * - returns: an image of the application's main window
      */
     func image() -> NSImage?
     
