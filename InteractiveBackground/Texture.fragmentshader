@@ -1,0 +1,11 @@
+#version 330 core
+
+uniform sampler2D sample;
+in vec2 passTexturePosition;
+
+out vec4 outColor;
+
+void main()
+{
+    outColor = texture(sample, passTexturePosition);
+}
