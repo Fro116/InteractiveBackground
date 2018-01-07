@@ -10,6 +10,11 @@
 		A7BA98A11FF5831800045314 /* DesktopWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BA98A01FF5831800045314 /* DesktopWindow.swift */; };
 		A7BA98A31FF7142800045314 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BA98A21FF7142800045314 /* AnimationView.swift */; };
 		A7CB408A2001EB2B0036792F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB40892001EB2A0036792F /* AppDelegate.swift */; };
+		A7CB40922001FDD70036792F /* OpenGLUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB408D2001FDD30036792F /* OpenGLUtility.swift */; };
+		A7CB40932001FDD70036792F /* Texture.vertexshader in Resources */ = {isa = PBXBuildFile; fileRef = A7CB408E2001FDD40036792F /* Texture.vertexshader */; };
+		A7CB40942001FDD70036792F /* SwiftOpenGLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB408F2001FDD50036792F /* SwiftOpenGLView.swift */; };
+		A7CB40952001FDD70036792F /* Texture.fragmentshader in Resources */ = {isa = PBXBuildFile; fileRef = A7CB40902001FDD60036792F /* Texture.fragmentshader */; };
+		A7CB40962001FDD70036792F /* OpenGLRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB40912001FDD70036792F /* OpenGLRectangle.swift */; };
 		A7D35C281FF2D6920067ED3C /* WindowInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D35C271FF2D6920067ED3C /* WindowInfo.swift */; };
 		A7D8C8F11FF2F696004E15CB /* MonikaAfterStoryAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D8C8F01FF2F696004E15CB /* MonikaAfterStoryAdapter.swift */; };
 		A7D8C8F31FF2FB70004E15CB /* ApplicationInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D8C8F21FF2FB70004E15CB /* ApplicationInterface.swift */; };
@@ -22,6 +27,11 @@
 		A7BA98A01FF5831800045314 /* DesktopWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopWindow.swift; sourceTree = "<group>"; };
 		A7BA98A21FF7142800045314 /* AnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		A7CB40892001EB2A0036792F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A7CB408D2001FDD30036792F /* OpenGLUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGLUtility.swift; sourceTree = "<group>"; };
+		A7CB408E2001FDD40036792F /* Texture.vertexshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Texture.vertexshader; sourceTree = "<group>"; };
+		A7CB408F2001FDD50036792F /* SwiftOpenGLView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftOpenGLView.swift; sourceTree = "<group>"; };
+		A7CB40902001FDD60036792F /* Texture.fragmentshader */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Texture.fragmentshader; sourceTree = "<group>"; };
+		A7CB40912001FDD70036792F /* OpenGLRectangle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGLRectangle.swift; sourceTree = "<group>"; };
 		A7D35C271FF2D6920067ED3C /* WindowInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowInfo.swift; sourceTree = "<group>"; };
 		A7D8C8F01FF2F696004E15CB /* MonikaAfterStoryAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonikaAfterStoryAdapter.swift; sourceTree = "<group>"; };
 		A7D8C8F21FF2FB70004E15CB /* ApplicationInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationInterface.swift; sourceTree = "<group>"; };
@@ -63,6 +73,11 @@
 		A7E26AEB1FEB5D0600F5D7F4 /* InteractiveBackground */ = {
 			isa = PBXGroup;
 			children = (
+				A7CB40902001FDD60036792F /* Texture.fragmentshader */,
+				A7CB408E2001FDD40036792F /* Texture.vertexshader */,
+				A7CB40912001FDD70036792F /* OpenGLRectangle.swift */,
+				A7CB408D2001FDD30036792F /* OpenGLUtility.swift */,
+				A7CB408F2001FDD50036792F /* SwiftOpenGLView.swift */,
 				A7E26AF61FEB5D0600F5D7F4 /* InteractiveBackground.entitlements */,
 				A7E26AF51FEB5D0600F5D7F4 /* Info.plist */,
 				A7CB40892001EB2A0036792F /* AppDelegate.swift */,
@@ -144,6 +159,8 @@
 			files = (
 				A7E26AF11FEB5D0600F5D7F4 /* Assets.xcassets in Resources */,
 				A7E26AF41FEB5D0600F5D7F4 /* Main.storyboard in Resources */,
+				A7CB40932001FDD70036792F /* Texture.vertexshader in Resources */,
+				A7CB40952001FDD70036792F /* Texture.fragmentshader in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,11 +173,14 @@
 			files = (
 				A7BA98A11FF5831800045314 /* DesktopWindow.swift in Sources */,
 				A7D8C8F31FF2FB70004E15CB /* ApplicationInterface.swift in Sources */,
+				A7CB40942001FDD70036792F /* SwiftOpenGLView.swift in Sources */,
 				A7F5A31E1FF57F730077B1B3 /* ViewController.swift in Sources */,
 				A7BA98A31FF7142800045314 /* AnimationView.swift in Sources */,
 				A7CB408A2001EB2B0036792F /* AppDelegate.swift in Sources */,
 				A7D35C281FF2D6920067ED3C /* WindowInfo.swift in Sources */,
 				A7D8C8F11FF2F696004E15CB /* MonikaAfterStoryAdapter.swift in Sources */,
+				A7CB40962001FDD70036792F /* OpenGLRectangle.swift in Sources */,
+				A7CB40922001FDD70036792F /* OpenGLUtility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
