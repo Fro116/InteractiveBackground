@@ -54,6 +54,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A7CB4098200205AC0036792F /* OpenGL */ = {
+			isa = PBXGroup;
+			children = (
+				A7CB40902001FDD60036792F /* Texture.fragmentshader */,
+				A7CB408E2001FDD40036792F /* Texture.vertexshader */,
+				A7CB40912001FDD70036792F /* OpenGLRectangle.swift */,
+				A7CB408D2001FDD30036792F /* OpenGLUtility.swift */,
+			);
+			path = OpenGL;
+			sourceTree = "<group>";
+		};
+		A7CB4099200206100036792F /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				A7D8C8F21FF2FB70004E15CB /* ApplicationInterface.swift */,
+				A7D8C8F01FF2F696004E15CB /* MonikaAfterStoryAdapter.swift */,
+				A7D35C271FF2D6920067ED3C /* WindowInfo.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		A7CB409A2002069C0036792F /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				A7CB40892001EB2A0036792F /* AppDelegate.swift */,
+				A7F5A31D1FF57F720077B1B3 /* ViewController.swift */,
+				A7BA98A01FF5831800045314 /* DesktopWindow.swift */,
+				A7BA98A21FF7142800045314 /* AnimationView.swift */,
+				A7CB408F2001FDD50036792F /* SwiftOpenGLView.swift */,
+				A7E26AF21FEB5D0600F5D7F4 /* Main.storyboard */,
+			);
+			path = Engine;
+			sourceTree = "<group>";
+		};
 		A7E26AE01FEB5D0600F5D7F4 = {
 			isa = PBXGroup;
 			children = (
@@ -73,22 +107,12 @@
 		A7E26AEB1FEB5D0600F5D7F4 /* InteractiveBackground */ = {
 			isa = PBXGroup;
 			children = (
-				A7CB40902001FDD60036792F /* Texture.fragmentshader */,
-				A7CB408E2001FDD40036792F /* Texture.vertexshader */,
-				A7CB40912001FDD70036792F /* OpenGLRectangle.swift */,
-				A7CB408D2001FDD30036792F /* OpenGLUtility.swift */,
-				A7CB408F2001FDD50036792F /* SwiftOpenGLView.swift */,
+				A7CB4099200206100036792F /* Applications */,
+				A7CB4098200205AC0036792F /* OpenGL */,
+				A7CB409A2002069C0036792F /* Engine */,
 				A7E26AF61FEB5D0600F5D7F4 /* InteractiveBackground.entitlements */,
 				A7E26AF51FEB5D0600F5D7F4 /* Info.plist */,
-				A7CB40892001EB2A0036792F /* AppDelegate.swift */,
-				A7D8C8F21FF2FB70004E15CB /* ApplicationInterface.swift */,
-				A7D8C8F01FF2F696004E15CB /* MonikaAfterStoryAdapter.swift */,
-				A7D35C271FF2D6920067ED3C /* WindowInfo.swift */,
-				A7F5A31D1FF57F720077B1B3 /* ViewController.swift */,
-				A7BA98A21FF7142800045314 /* AnimationView.swift */,
-				A7BA98A01FF5831800045314 /* DesktopWindow.swift */,
 				A7E26AF01FEB5D0600F5D7F4 /* Assets.xcassets */,
-				A7E26AF21FEB5D0600F5D7F4 /* Main.storyboard */,
 			);
 			path = InteractiveBackground;
 			sourceTree = "<group>";
