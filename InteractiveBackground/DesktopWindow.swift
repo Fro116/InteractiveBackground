@@ -9,8 +9,14 @@
 import Foundation
 import Cocoa
 
+/**
+ * Draws the desktop background
+ */
 class DesktopWindow : NSWindow {
     
+    /**
+     * Creates a full size window that overwrites the desktop
+     */
     override init(contentRect: NSRect, styleMask: NSWindow.StyleMask, backing: NSWindow.BackingStoreType, defer _defer: Bool) {
         super.init(contentRect: contentRect, styleMask: styleMask, backing: backing, defer: _defer)
         // display above desktop background and behind desktop icons

@@ -8,8 +8,8 @@
 
 import Cocoa
 
-/*
- * Class to play an app as the desktop background
+/**
+ * Plays an app as the desktop background
  */
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

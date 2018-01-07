@@ -11,6 +11,11 @@ import AVFoundation
 
 class ViewController: NSViewController {
     
+    /**
+     * Tests whether the event interacts with the desktop background
+     *
+     *  - returns: true if the event hits the background
+     */
     private func isBackgroundEvent(event: NSEvent) -> Bool {
         // checks that all windows the point intersects with are below the background level
         let visibleLevel = CGWindowLevel(CGWindowLevelKey.baseWindow.rawValue)
@@ -23,18 +28,14 @@ class ViewController: NSViewController {
             .reduce(true, {$0 && $1})
     }
     
+    /**
+     * Forwards events that interact with the desktop background
+     *
+     * - paramter event: a mouse or keyboard event
+     */
     private func handleEvent(event: NSEvent) {
-        // forward events that interact with the desktop background
         if isBackgroundEvent(event: event) {
             handler.handle(event: event)
-        }
-    }
-    
-    @objc private func updateImage() {
-        if let image = handler.image() {
-            //imageView!.image = image
-            //imageView!.needsDisplay = true
-            //print(imageView!.image)
         }
     }
 
@@ -50,12 +51,7 @@ class ViewController: NSViewController {
         //NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handleEvent)
     }
 
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
-    }
-
-    private let handler : ApplicationInterface = MonikaAfterstoryAdapter()
+    /// the application to set as the desktop background
+    private let handler : ApplicationInterface = MonikaAfterStoryAdapter()
 }
 
