@@ -1,5 +1,5 @@
 //
-//  SwiftOpenGLView.swift
+//  AnimationView.swift
 //  InteractiveBackground
 //
 //  Created by Kundan Chintamaneni on 1/1/18.
@@ -13,7 +13,7 @@ import OpenGL.GL3
 /**
  * An animated view context that displays a single image
  */
-final class SwiftOpenGLView: NSOpenGLView {
+final class AnimationView: NSOpenGLView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
@@ -21,9 +21,11 @@ final class SwiftOpenGLView: NSOpenGLView {
         openGLContext = OpenGLUtility.createContext()
         pixelFormat = openGLContext?.pixelFormat
         openGLContext?.setValues([1], for: .swapInterval)
-        
-        let bounds = CGRect(x: -1, y: -1, width: 2, height: 2)
-        display = OpenGLRectangle(bounds: bounds)
+    }
+    
+    public func setAnimation(animationProducer: TextureHandler) {
+        self.animationProducer = animationProducer
+        display?.setTexture(texture: animationProducer.texture())
     }
     
     override func prepareOpenGL() {
@@ -31,6 +33,12 @@ final class SwiftOpenGLView: NSOpenGLView {
         
         configureOpenGL()
         startAnimation()
+        
+        let bounds = CGRect(x: -1, y: -1, width: 2, height: 2)
+        display = OpenGLRectangle(bounds: bounds)
+        if let producer = animationProducer {
+            display!.setTexture(texture: producer.texture())
+        }
     }
     
     /**
@@ -51,7 +59,7 @@ final class SwiftOpenGLView: NSOpenGLView {
     private func startAnimation() {
         let displayLinkOutputCallback: CVDisplayLinkOutputCallback = {(displayLink: CVDisplayLink, inNow: UnsafePointer<CVTimeStamp>, inOutputTime: UnsafePointer<CVTimeStamp>, flagsIn: CVOptionFlags, flagsOut: UnsafeMutablePointer<CVOptionFlags>, displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn in
             
-            let view = unsafeBitCast(displayLinkContext, to: SwiftOpenGLView.self)
+            let view = unsafeBitCast(displayLinkContext, to: AnimationView.self)
             view.drawView()
             return kCVReturnSuccess
         }
@@ -71,7 +79,8 @@ final class SwiftOpenGLView: NSOpenGLView {
             glUseProgram(programID)
             
             glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
-            display?.draw()
+            animationProducer?.update()
+            display!.draw()
             
             glUseProgram(0)
             CGLFlushDrawable(context.cglContextObj!)
@@ -95,6 +104,9 @@ final class SwiftOpenGLView: NSOpenGLView {
     
     /// a frame that will render the current image
     private var display: OpenGLRectangle?
+    
+    /// Determines what to draw on each frame
+    private var animationProducer : TextureHandler?
     
 }
 

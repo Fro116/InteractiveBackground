@@ -12,7 +12,7 @@ import OpenGL.GL3
 class OpenGLRectangle {
     
     /**
-     * Creates a rectangle to render textures
+     * Creates a rectangle to render a texture
      *
      * - parameter bounds: the position and size of the rectangle in
      *     normalized coordinates. (-1, -1) is the bottom left
@@ -59,15 +59,11 @@ class OpenGLRectangle {
     }
     
     /**
-     * Deletes the current texture and replaces
-     * it with the new texture
+     * Replaces the current texture
      *
      * - parameter texture: a handle to the texture
      */
     public func setTexture(texture : GLuint) {
-        if var tboID = self.texture {
-            glDeleteTextures(1, &tboID)
-        }
         self.texture = texture;
     }
     
@@ -93,9 +89,6 @@ class OpenGLRectangle {
         glDeleteVertexArrays(1, &vaoID)
         glDeleteBuffers(1, &vboID)
         glDeleteBuffers(1, &eboID)
-        if var tboID = texture {
-            glDeleteTextures(1, &tboID)
-        }
     }
     
     /// handle to the texture

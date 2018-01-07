@@ -26,6 +26,6 @@ protocol ApplicationInterface {
      *
      * - returns: an image of the application's main window
      */
-    func image() -> NSImage?
+    func image() -> CGImage?
     
 }
