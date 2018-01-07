@@ -88,15 +88,12 @@ class WindowInfo {
      *
      * - returns: an image of this window
      */
-    public func image() -> NSImage {
+    public func image() -> CGImage {
         let region = bounds()
         let id = windowID()
         let resolution = CGWindowImageOption.bestResolution
         let selector = CGWindowListOption.optionIncludingWindow
-        let rawImage = CGWindowListCreateImage(region, selector, id, resolution)!
-        // tells NSImage constructor to copy the size from rawImage
-        let rawImageSize = NSZeroSize
-        let image = NSImage(cgImage: rawImage, size: rawImageSize)
+        let image = CGWindowListCreateImage(region, selector, id, resolution)!
         return image
     }
     

@@ -35,7 +35,7 @@ class ViewController: NSViewController {
      */
     private func handleEvent(event: NSEvent) {
         if isBackgroundEvent(event: event) {
-            handler.handle(event: event)
+            m_app.handle(event: event)
         }
     }
 
@@ -46,12 +46,49 @@ class ViewController: NSViewController {
         let fullScreen = NSScreen.main!.frame
         view.frame = fullScreen
         
+        /**
+         * Adapter to bridge an ApplicationInterface with a TextureHandler
+         */
+        class DesktopPainter : TextureHandler {
+            
+            init(app: ApplicationInterface) {
+                m_app = app
+            }
+            
+            func texture() -> GLuint {
+                if m_texture == 0 {
+                    m_texture = OpenGLUtility.generateTexture()
+                }
+                return m_texture
+            }
+            
+            func update() {
+                if let image = m_app.image() {
+                    OpenGLUtility.loadTexture(image: image, id: m_texture)
+                }
+            }
+            
+            deinit {
+                glDeleteTextures(1, &m_texture)
+            }
+            
+            let m_app : ApplicationInterface
+            var m_texture : GLuint = 0
+        }
+        
+        let textureProducer = DesktopPainter(app: m_app)
+        let animationView = view.subviews[0] as! AnimationView
+        animationView.setAnimation(animationProducer: textureProducer)
+ 
+        
         // set up event forwarding
         //let mask : NSEvent.EventTypeMask = [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.leftMouseUp]
         //NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handleEvent)
     }
 
     /// the application to set as the desktop background
-    private let handler : ApplicationInterface = MonikaAfterStoryAdapter()
+    private let m_app : ApplicationInterface = MonikaAfterStoryAdapter()
+    
+ 
 }
 

@@ -58,21 +58,33 @@ final class OpenGLUtility {
     }
     
     /**
-     * Loads the image into a texture
+     * Loads the image into a newly allocated texture
      *
      * - parameter image: the texture data
      * - returns: a handle to the texture
      */
     public static func loadTexture(image : CGImage) -> GLuint {
-        var tboID: GLuint = 0
-
+        let tboID: GLuint = generateTexture()
+        loadTexture(image: image, id: tboID)        
+        return tboID
+    }
+    
+    /**
+     * Loads the image into a texture
+     *
+     * - parameter image: the texture data
+     * - parameter id: the texture slot to bind
+     */
+    public static func loadTexture(image: CGImage, id: GLuint) {
+        let tboID: GLuint = id
+        
         let bitsInByte = 8;
         let numBytes = image.bitsPerPixel / bitsInByte * image.width * image.height
         let textureData = UnsafeMutableRawPointer.allocate(bytes: numBytes, alignedTo: MemoryLayout<GLint>.alignment)
         let context = CGContext(data: textureData, width: image.width, height: image.height, bitsPerComponent: bitsInByte, bytesPerRow: image.bytesPerRow, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         context?.draw(image, in: CGRect(x: 0.0, y: 0.0, width: Double(image.width), height: Double(image.height)))
         
-        glGenTextures(1, &tboID)
+        let a = NSDate().timeIntervalSince1970
         glBindTexture(GLenum(GL_TEXTURE_2D), tboID)
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
@@ -81,7 +93,18 @@ final class OpenGLUtility {
         glTexImage2D(GLenum(GL_TEXTURE_2D), 0, GL_RGBA, GLsizei(image.width), GLsizei(image.height), 0, GLenum(GL_RGBA), GLenum(GL_UNSIGNED_BYTE), textureData)
         glBindTexture(GLenum(GL_TEXTURE_2D), 0)
         free(textureData)
-        
+        let b = NSDate().timeIntervalSince1970
+        print(b-a)
+    }
+    
+    /**
+     * Creates a newly allocated texture
+     *
+     * - returns: a handle to the texture
+     */
+    public static func generateTexture() -> GLuint {
+        var tboID: GLuint = 0
+        glGenTextures(1, &tboID)
         return tboID
     }
     

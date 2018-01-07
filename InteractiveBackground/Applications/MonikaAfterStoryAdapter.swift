@@ -67,7 +67,7 @@ class MonikaAfterStoryAdapter : ApplicationInterface {
         }
     }
     
-    func image() -> NSImage? {
+    func image() -> CGImage? {
         return getMASWindow()?.image()
     }
     
