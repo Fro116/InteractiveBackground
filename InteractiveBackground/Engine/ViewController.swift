@@ -29,7 +29,8 @@ class ViewController: NSViewController {
     }
     
     /**
-     * Forwards events that interact with the desktop background
+     * Checks if the event interacts with `app` and if so,
+     * forwards the event.
      *
      * - paramter event: a mouse or keyboard event
      */
@@ -46,49 +47,63 @@ class ViewController: NSViewController {
         let fullScreen = NSScreen.main!.frame
         view.frame = fullScreen
         
-        /**
-         * Adapter to bridge an ApplicationInterface with a TextureHandler
-         */
-        class DesktopPainter : TextureHandler {
-            
-            init(app: ApplicationInterface) {
-                m_app = app
-            }
-            
-            func texture() -> GLuint {
-                if m_texture == 0 {
-                    m_texture = OpenGLUtility.generateTexture()
-                }
-                return m_texture
-            }
-            
-            func update() {
-                if let image = m_app.image() {
-                    OpenGLUtility.loadTexture(image: image, id: m_texture)
-                }
-            }
-            
-            deinit {
-                glDeleteTextures(1, &m_texture)
-            }
-            
-            let m_app : ApplicationInterface
-            var m_texture : GLuint = 0
-        }
-        
-        let textureProducer = DesktopPainter(app: m_app)
+        // set up desktop background drawing
+        let textureProducer = ApplicationTextureHandler(app: m_app)
         let animationView = view.subviews[0] as! AnimationView
         animationView.setAnimation(animationProducer: textureProducer)
- 
         
         // set up event forwarding
-        //let mask : NSEvent.EventTypeMask = [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.leftMouseUp]
-        //NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handleEvent)
+        let mask : NSEvent.EventTypeMask = [NSEvent.EventTypeMask.leftMouseDown, NSEvent.EventTypeMask.leftMouseUp]
+        NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handleEvent)
+    }
+    
+    /**
+     * Adapter to bridge an ApplicationInterface with a TextureHandler
+     * The generated textures are screenshots of the application
+     */
+    private class ApplicationTextureHandler : TextureHandler {
+        
+        /**
+         * Creates a `TextureHandler` to mirror the given app
+         *
+         * - parameter app: the application to draw
+         */
+        init(app: ApplicationInterface) {
+            m_app = app
+        }
+        
+        func texture() -> GLuint {
+            if m_texture == 0 {
+                m_texture = OpenGLUtility.generateTexture()
+            }
+            return m_texture
+        }
+        
+        /**
+         * Sets the texture to the current screenshot of the application
+         */
+        func update() {
+            if let image = m_app.image() {
+                OpenGLUtility.loadTexture(image: image, id: m_texture)
+            }
+        }
+        
+        /**
+         * Clean up OpenGL resources
+         */
+        deinit {
+            glDeleteTextures(1, &m_texture)
+        }
+        
+        /// the application that this object is tracking
+        let m_app : ApplicationInterface
+        
+        /// the texture managed by this object
+        var m_texture : GLuint = 0
     }
 
     /// the application to set as the desktop background
     private let m_app : ApplicationInterface = MonikaAfterStoryAdapter()
     
- 
 }
 
