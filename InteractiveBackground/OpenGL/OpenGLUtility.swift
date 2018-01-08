@@ -77,14 +77,12 @@ final class OpenGLUtility {
      */
     public static func loadTexture(image: CGImage, id: GLuint) {
         let tboID: GLuint = id
-        
         let bitsInByte = 8;
         let numBytes = image.bitsPerPixel / bitsInByte * image.width * image.height
         let textureData = UnsafeMutableRawPointer.allocate(bytes: numBytes, alignedTo: MemoryLayout<GLint>.alignment)
-        let context = CGContext(data: textureData, width: image.width, height: image.height, bitsPerComponent: bitsInByte, bytesPerRow: image.bytesPerRow, space: CGColorSpace(name: CGColorSpace.sRGB)!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
+        let context = CGContext(data: textureData, width: image.width, height: image.height, bitsPerComponent: image.bitsPerComponent, bytesPerRow: image.bytesPerRow, space: image.colorSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         context?.draw(image, in: CGRect(x: 0.0, y: 0.0, width: Double(image.width), height: Double(image.height)))
         
-        let a = NSDate().timeIntervalSince1970
         glBindTexture(GLenum(GL_TEXTURE_2D), tboID)
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)
@@ -92,9 +90,8 @@ final class OpenGLUtility {
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_WRAP_T), GL_CLAMP_TO_EDGE)
         glTexImage2D(GLenum(GL_TEXTURE_2D), 0, GL_RGBA, GLsizei(image.width), GLsizei(image.height), 0, GLenum(GL_RGBA), GLenum(GL_UNSIGNED_BYTE), textureData)
         glBindTexture(GLenum(GL_TEXTURE_2D), 0)
+        
         free(textureData)
-        let b = NSDate().timeIntervalSince1970
-        print(b-a)
     }
     
     /**

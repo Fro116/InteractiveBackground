@@ -89,11 +89,10 @@ class WindowInfo {
      * - returns: an image of this window
      */
     public func image() -> CGImage {
-        let region = bounds()
         let id = windowID()
-        let resolution = CGWindowImageOption.bestResolution
+        let resolution = CGWindowImageOption.nominalResolution
         let selector = CGWindowListOption.optionIncludingWindow
-        let image = CGWindowListCreateImage(region, selector, id, resolution)!
+        let image = CGWindowListCreateImage(.infinite, selector, id, resolution)!
         return image
     }
     
