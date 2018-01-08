@@ -24,6 +24,7 @@ final class AnimationView: NSOpenGLView {
         openGLContext = OpenGLUtility.createContext()
         pixelFormat = openGLContext?.pixelFormat
         openGLContext?.setValues([1], for: .swapInterval)
+        wantsBestResolutionOpenGLSurface = true
     }
     
     /**
