@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A709F7A32002CA7C007BD9C0 /* Texture.png in Resources */ = {isa = PBXBuildFile; fileRef = A709F7A22002CA7C007BD9C0 /* Texture.png */; };
 		A7BA98A11FF5831800045314 /* DesktopWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BA98A01FF5831800045314 /* DesktopWindow.swift */; };
 		A7CB408A2001EB2B0036792F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB40892001EB2A0036792F /* AppDelegate.swift */; };
 		A7CB40922001FDD70036792F /* OpenGLUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7CB408D2001FDD30036792F /* OpenGLUtility.swift */; };
@@ -25,7 +24,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A709F7A22002CA7C007BD9C0 /* Texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Texture.png; sourceTree = "<group>"; };
 		A7BA98A01FF5831800045314 /* DesktopWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopWindow.swift; sourceTree = "<group>"; };
 		A7CB40892001EB2A0036792F /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A7CB408D2001FDD30036792F /* OpenGLUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenGLUtility.swift; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 		A7E26AEB1FEB5D0600F5D7F4 /* InteractiveBackground */ = {
 			isa = PBXGroup;
 			children = (
-				A709F7A22002CA7C007BD9C0 /* Texture.png */,
 				A7CB4099200206100036792F /* Applications */,
 				A7CB4098200205AC0036792F /* OpenGL */,
 				A7CB409A2002069C0036792F /* Engine */,
@@ -185,7 +182,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7E26AF11FEB5D0600F5D7F4 /* Assets.xcassets in Resources */,
-				A709F7A32002CA7C007BD9C0 /* Texture.png in Resources */,
 				A7E26AF41FEB5D0600F5D7F4 /* Main.storyboard in Resources */,
 				A7CB40932001FDD70036792F /* Texture.vertexshader in Resources */,
 				A7CB40952001FDD70036792F /* Texture.fragmentshader in Resources */,

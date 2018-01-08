@@ -46,6 +46,7 @@ class ViewController: NSViewController {
         // set size to be full screen
         let fullScreen = NSScreen.main!.frame
         view.frame = fullScreen
+        NSMenu.setMenuBarVisible(false)
         
         // set up desktop background drawing
         let textureProducer = ApplicationTextureHandler(app: m_app)
