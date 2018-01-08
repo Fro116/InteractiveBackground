@@ -9,7 +9,8 @@
 import OpenGL.GL3
 
 /**
- * Manages an OpenGL texture
+ * Manages an OpenGL texture. Classes implenting this interface
+ * are responsible for the allocation and deallocation of textures
  */
 protocol TextureHandler {
     

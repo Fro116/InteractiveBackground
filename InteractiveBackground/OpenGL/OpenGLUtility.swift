@@ -76,6 +76,7 @@ final class OpenGLUtility {
      * - parameter id: the texture slot to bind
      */
     public static func loadTexture(image: CGImage, id: GLuint) {
+        // generate bitmap data
         let tboID: GLuint = id
         let bitsInByte = 8;
         let numBytes = image.bitsPerPixel / bitsInByte * image.width * image.height
@@ -83,6 +84,7 @@ final class OpenGLUtility {
         let context = CGContext(data: textureData, width: image.width, height: image.height, bitsPerComponent: image.bitsPerComponent, bytesPerRow: image.bytesPerRow, space: image.colorSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue)
         context?.draw(image, in: CGRect(x: 0.0, y: 0.0, width: Double(image.width), height: Double(image.height)))
         
+        // load bitmap into OpenGL
         glBindTexture(GLenum(GL_TEXTURE_2D), tboID)
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MIN_FILTER), GL_LINEAR)
         glTexParameteri(GLenum(GL_TEXTURE_2D), GLenum(GL_TEXTURE_MAG_FILTER), GL_LINEAR)

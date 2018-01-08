@@ -11,7 +11,10 @@ import Cocoa
 import OpenGL.GL3
 
 /**
- * An animated view context that displays a single image
+ * Displays a continuous animation. This view consists of a rectangle
+ * that holds a single texture. Every time the display refreshes,
+ * the texture advances to the next frame of the animation and
+ * the view is redrawn.
  */
 final class AnimationView: NSOpenGLView {
     
@@ -23,6 +26,14 @@ final class AnimationView: NSOpenGLView {
         openGLContext?.setValues([1], for: .swapInterval)
     }
     
+    /**
+     * During each frame, the `update` method will be called on
+     * the `animationProducer`. The newly updated texture will
+     * then be displayed in this view
+     *
+     * - parameter animationProducer: generates the textures that will
+     *       will be displayed in this view
+     */
     public func setAnimation(animationProducer: TextureHandler) {
         self.animationProducer = animationProducer
         display?.setTexture(texture: animationProducer.texture())
@@ -34,6 +45,7 @@ final class AnimationView: NSOpenGLView {
         configureOpenGL()
         startAnimation()
         
+        // initialize drawing objects
         let bounds = CGRect(x: -1, y: -1, width: 2, height: 2)
         display = OpenGLRectangle(bounds: bounds)
         if let producer = animationProducer {
@@ -42,7 +54,7 @@ final class AnimationView: NSOpenGLView {
     }
     
     /**
-     * Sets the OpenGL rendering parameters, such as the
+     * Sets the OpenGL rendering parameters, including the
      * shaders and the clear color
      */
     private func configureOpenGL() {
@@ -54,7 +66,7 @@ final class AnimationView: NSOpenGLView {
     
     /**
      * Creates and starts a DisplayLink. This causes `drawView` to
-     * be called whenever a frame will be drawn
+     * be called whenever the monitor refreshes
      */
     private func startAnimation() {
         let displayLinkOutputCallback: CVDisplayLinkOutputCallback = {(displayLink: CVDisplayLink, inNow: UnsafePointer<CVTimeStamp>, inOutputTime: UnsafePointer<CVTimeStamp>, flagsIn: CVOptionFlags, flagsOut: UnsafeMutablePointer<CVOptionFlags>, displayLinkContext: UnsafeMutableRawPointer?) -> CVReturn in
@@ -74,14 +86,17 @@ final class AnimationView: NSOpenGLView {
      */
     private func drawView() {
         if let context = self.openGLContext {
+            // setup
             context.makeCurrentContext()
             CGLLockContext(context.cglContextObj!)
             glUseProgram(programID)
             
+            // draw
             glClear(GLbitfield(GL_COLOR_BUFFER_BIT))
             animationProducer?.update()
             display!.draw()
             
+            // clean up
             glUseProgram(0)
             CGLFlushDrawable(context.cglContextObj!)
             CGLUnlockContext(context.cglContextObj!)
